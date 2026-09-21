@@ -1,118 +1,19 @@
-# 🧠 Quiz Application
+# Quiz Application
 
-A desktop-based quiz application built with **Core Java** using Swing and AWT. Users can enter their name, attempt multiple-choice questions with a live timer, and view their final score — all through a clean and interactive GUI.
+A Java desktop quiz game with a Swing GUI. Has a login screen, a rules page, the quiz itself with a countdown timer per question, and a score screen at the end.
 
----
+## What it does
 
-## 📌 Features
+User enters their name on the login screen, reads the rules, then goes through 10 multiple choice questions. Each question has a 20-second timer. There is a lifeline option to skip a question. At the end, the score screen shows how many you got right.
 
-- Welcome/Home screen with name entry before starting the quiz
-- Multiple-choice questions with 4 options each
-- Countdown timer for each question
-- Score tracking and result display at the end
-- Clean and responsive GUI built entirely with Java Swing & AWT
-- No external libraries or frameworks required
+## Stack
 
----
+Swing (javax.swing) - the entire UI across four screens: Login, Rules, Quiz and Score. Each screen is its own JFrame. JRadioButton grouped with ButtonGroup handles the multiple choice options so only one can be selected at a time.
 
-## 🛠️ Tech Stack
+AWT (java.awt) - layout, fonts, colors and background images. The quiz screen loads a full-width banner image as a JLabel background.
 
-| Technology | Purpose |
-|------------|---------|
-| Core Java | Application logic |
-| Java Swing | GUI components & layout |
-| Java AWT | Event handling & graphics |
-| NetBeans IDE | Development environment |
+Timer (java.util.Timer with javax.swing.Timer) - counts down 20 seconds per question. The timer updates a label on screen each second and auto-submits if the user doesn't answer in time.
 
----
+ActionListener - handles all button clicks: next question, submit answer, lifeline. The quiz logic (checking the selected answer against the correct one, updating the score) all runs inside actionPerformed.
 
-## 📁 Project Structure
-
-```
-Quiz-Application/
-├── src/
-│   ├── HomePage.java      # Welcome screen with name input
-│   ├── QuizPage.java      # Quiz screen with questions & timer
-│   ├── ResultPage.java    # Score display & result screen
-├── README.md
-```
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Java JDK 8 or above
-- NetBeans IDE (recommended) or any Java IDE
-
-### Installation & Run
-
-```bash
-# Clone the repository
-git clone https://github.com/bhoomi-wadhwani/Quiz-Application.git
-
-# Open in NetBeans IDE
-# File → Open Project → Select the cloned folder
-```
-
-### Running the App
-
-1. Run `HomePage.java` as the main file
-2. Enter your name on the welcome screen
-3. Click **Start Quiz** to begin
-4. Answer each question before the timer runs out
-5. View your final score on the result screen
-
----
-
-## 🖥️ How It Works
-
-```
-[ Home Page ]  →  Enter Name & Start
-      ↓
-[ Quiz Page ]  →  MCQ Questions + Timer
-      ↓
-[ Result Page ] →  Score & Performance
-```
-
-- **Home Page:** User enters their name and clicks Start
-- **Quiz Page:** Questions are displayed one at a time with 4 options and a countdown timer
-- **Result Page:** Final score is shown based on correct answers
-
----
-
-## 📸 Key Functionalities
-
-| Feature | Description |
-|---------|-------------|
-| Name Entry | Personalised quiz experience with user's name |
-| MCQ Questions | Multiple choice with single correct answer |
-| Timer | Countdown per question — auto-moves on timeout |
-| Score Calculation | Tracks correct answers and displays final result |
-| GUI Interface | Built fully with Java Swing components |
-
----
-
-## 🔮 Future Improvements
-
-- [ ] Add question categories (Science, History, Tech, etc.)
-- [ ] Load questions dynamically from a file or database
-- [ ] Add difficulty levels (Easy / Medium / Hard)
-- [ ] Store high scores locally
-- [ ] Add sound effects for correct/wrong answers
-- [ ] Add a leaderboard screen
-
----
-
-## 👩‍💻 Author
-
-**Bhoomi Wadhwani**  
-BSc.IT Student | KC College, Bombay  
-[GitHub](https://github.com/bhoomi-wadhwani) | [LinkedIn](https://www.linkedin.com/in/bhoomi-wadhwani-85789728b/)
-
----
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
+ImageIcon - loads the login background, quiz banner and score screen image from the icons folder.
